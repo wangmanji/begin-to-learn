@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>this的应用</title>
+ </head>
+ <style>
+	input{
+		width:65px;
+		height:55px;
+		font-size:35px;
+		/*border-radius:1px;*/
+		display:inline-block;
+		border-color:#33ffff;
+	}
+	#inspan{
+		text-align:center;
+		width:300px;
+		margin-top:3px;
+	}
+	#words{
+		width:300px;
+		height:210px;
+		border:1px solid blue;
+		text-align:center;
+		line-height:210px;
+		font-size:105px;
+		/*font-family:"微软雅黑";*/
+	}
+ </style>
+ <body>
+ <div id="words">
+  世界
+ </div>
+ <div id="inspan">
+  <input type="button" value="W"/>
+  <input type="button" value="o"/>
+  <input type="button" value="r"/>
+  <input type="button" value="d"/>
+  </div>
+  <script type="text/javascript">
+	var o_input = document.getElementsByTagName("input");
+	var oword=["A","B","C","D"];
+	
+	for(var i=0;i<o_input.length;i++){
+		o_input[i].num=0;
+		o_input[i].onclick=function(){
+			
+			this.value=oword[this.num];
+			this.num++;
+			if(this.num == o_input.length){
+				this.num=0;
+			}
+		
+	}
+	}
+
+  
+  </script>
+ </body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ <style type="text/css">
+	#b_img{
+		width:430px;
+		height:570px;
+		background:url(img/4.png) center;
+		background-size:cover;/*等比缩小图片来适应元素的尺寸，即contain值;等比扩展图片来填满元素，即cover值*/
+	}
+	a{
+		display:block;
+		width:35px;
+		font-size:30px;
+		font-weight:bold;
+		font-family:"monospace";
+		color:rgba(255,255,255,0.2);
+		background:rgba(255,128,0,0.1);/*#ff9900*/
+		border-radius:9610px;
+		text-align:center;
+		cursor:pointer;
+	}
+	strong{
+		color:#00ffff;
+		font-family:"微软雅黑";
+		font-size:16px;
+		margin-left:15px;
+	}
+    #thumbnail{
+		width:400px;
+		height:500px;
+		position:relative;
+		margin-top:3px;
+		margin-left:15px;
+
+	}
+	#thumbnail img{
+		width:100%;
+		height:100%;
+	}
+	#left_a{
+		position:absolute;
+		left:12px;
+		top:227px;
+		text-align:center;
+	}
+	#right_a{
+		position:absolute;
+		right:12px;
+		top:227px;
+		text-align:center;
+	}
+	#b_img ul{
+		height:30px;
+		width:430px;
+		
+		text-align:center;
+		padding:0px;
+		margin-top:2px;
+		line-height:30px;
+	}
+	#b_img ul li{
+		display:inline-block;
+		margin:5px;
+		width:12px;
+		height:12px;
+		border-radius:20px;
+		background:#c8c8c8;
+		cursor:pointer;
+		/*position:relative;*/
+	}
+	#b_img ul .act{
+		background-color:#ffcc33;
+		/*border:2px solid #ffcc33;*/
+	}
+	.aact{
+		background:#ffcc99;
+		color:white;
+	}
+	#s_img{
+		display:block;
+		width:58px;
+		height:36px;
+		background:url(img/4.png) no-repeat center;
+		background-size:contain;/*等比缩小图片来适应元素的尺寸，即contain值;等比扩展图片来填满元素，即cover值*/
+		border:3px solid white;
+	}
+	#no{
+		width:0;
+		height:0;
+		border-top:6px solid white;
+		border-left:6px solid transparent;
+		border-right:6px solid transparent;
+		margin:0 auto;
+	}
+	span{
+		padding:0px;
+		width:63px;
+		display:block;
+		z-index:3px;
+		position:absolute;
+		top:489px;
+		left:158px;/*158,180(2),202(4),224(4)*/
+		display:none;
+	}
+	/*#n{
+		border:5px solid red;
+		width:400px;
+		height:500px;
+	}*/
+ </style>
+ </head>
+ <body>
+  <div id="b_img">
+	
+		<strong>带略缩图的图片轮换</strong>
+		<div id="thumbnail">
+			<img src="">
+			<a id="left_a">&lt</a>
+			<a id="right_a">&gt</a>
+		</div>
+		<ul>	
+		</ul>
+		<span><img id="s_img"/>
+		<div id="no"></div></span>	
+  </div>
+  <script type="text/javascript">
+	var ob_img =  document.getElementById("b_img");
+	var othumbnail =document.getElementById("thumbnail");
+	var photo = othumbnail.getElementsByTagName("img")[0];
+	var oul = ob_img.getElementsByTagName("ul")[0];
+	var oli = oul.getElementsByTagName("li");
+	var oli = oul.getElementsByTagName("li");
+	var oleft_a = document.getElementById("left_a");
+	var oright_a = document.getElementById("right_a");
+	var ono=document.getElementById("no");
+	var os_img=document.getElementById("s_img");
+	var img_library=["img/4.png","img/2.png","img/3.png","img/1.png"];
+	var y_coordinate=["158.5px","180px","202px","224px"];
+	var ouldiv = oul.getElementsByTagName("div")[0];
+	var ospan_1= ob_img.getElementsByTagName("span");
+	var os_img =  document.getElementById("s_img");
+	var num=0;
+	var oldli=null;
+	var j=null;
+    
+	for(var i=0;i<img_library.length;i++){
+		oul.innerHTML += "<li></li>";
+	}
+	
+	//初始化
+	//oli[0].style.background="#ffcc33";
+	
+	oli[num].className = "act";
+	photo.src=img_library[num];
+	oldli=oli[num];
+	
+	
+	for(var i=0;i<oli.length;i++){
+		oli[i].index=i;
+		oli[i].onclick=function(){
+			oldli.className='';
+			oldli=this;
+			this.className="act";
+			photo.src=img_library[this.index];
+			
+			
+			j=this.index;
+		}
+		oli[i].onmouseover=function(){
+			ospan_1[0].style.display="block";
+			ospan_1[0].style.left=y_coordinate[this.index];
+			os_img.src=img_library[this.index];
+			//clearInterval(t);
+		}
+		oli[i].onmouseout=function(){
+			ospan_1[0].style.display="none";
+		}
+	}
+	
+
+	
+	
+	oleft_a.onclick=function(){
+		j--;
+		if(j<0){
+			j=img_library.length-1;
+		}
+		photo.src=img_library[j];
+		oldli.className='';
+		oldli=oli[j];
+		oli[j].className = "act";
+		//clearInterval(t);
+	}
+	oleft_a.onmouseover=function(){
+		this.className="aact";
+		clearInterval(t);
+	}
+	oleft_a.onmouseout=function(){
+		this.className="";
+	}
+	oright_a.onclick=function(){
+			j++;
+			if(j>img_library.length-1){
+			j=0;
+	}
+		photo.src=img_library[j];
+		oldli.className='';
+		oldli=oli[j];
+		oli[j].className = "act";
+		//clearInterval(t);
+	}
+
+	function  auto(){
+			j++;
+			if(j>img_library.length-1){
+			j=0;
+	}
+		photo.src=img_library[j];
+		oldli.className='';
+		oldli=oli[j];
+		oli[j].className = "act";
+	}
+	t=setInterval("auto()",1000);
+    
+	
+	oright_a.onmouseover=function(){
+		this.className="aact";
+		//clearInterval(t);
+	}
+	oright_a.onmouseout=function(){
+		this.className="";
+	}
+
+   ob_img.onmouseover=function(){
+		clearInterval(t);
+   }
+
+	/*ob_img.onmouseout=function(){
+		window.setTimeout("auto()",1000);
+   }
+	
+	/*for(var i=0;i<oli.length;i++){
+		oli[i].index=i;
+		oli[i].onclick=function(){
+			oldli.className='';
+			oldli=this;
+			this.className="act";
+			photo.src=img_library[this.index];
+			ono.style.display="none";
+			os_img.style.display="none";
+		}
+		
+	}
+
+    var x = oli[0].offsetLeft;
+	var y = oli[0].offsetTop;
+	alert(y);
+    
+	 var x = oli[0].getBoundingClientRect().left;
+	 var y = oli[0].getBoundingClientRect().top;
+	 alert(x);
+	 alert(y);
+	 
+	 var x = oli[2].offsetLeft;
+	alert(x);*/
+  </script>
+ </body>
+</html>

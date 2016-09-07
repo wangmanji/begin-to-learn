@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+alert(sort(2,5));
+alert(sort(6,2));
+function sort(a,b){
+   var arr=[];
+   var am=null;
+   if(a>b){
+   		am=a;
+   		a=b;
+   		b=am;
+   	 }
+   for(var i=a;i<=b;i++){
+   		arr.push(i);
+   }
+   return arr;
+}
+</script>
+</body>
+</html>

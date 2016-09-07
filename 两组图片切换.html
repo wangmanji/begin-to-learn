@@ -1,0 +1,206 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+   <meta charset="UTF-8">
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+	<style type="text/css">
+		body{
+			
+		}
+		#inspan{
+			display:block;
+			margin-top:50px;
+			margin-bottom:13px;
+		}
+		#but_Top,#but_Bottom{
+			border:1px solid #c8c8c8;
+			border-radius:13px;
+			background:white;
+			line-height:16px;
+		}
+		#but_Bottom{
+			margin-left:10px;
+		}
+		#left_con{
+			width:450px;
+			height:320px;
+			/*border:1px solid red;*/
+			float:left;
+			padding:0 25px;
+			padding-top:20px;
+			color:white;
+			background:url("img/loader_ico.gif") no-repeat center  #373737;
+		}
+		#left_con img{
+			width:450px;
+			height:246px;
+			
+		}
+		#right_con img{
+			width:240px;
+			height:246px;
+			
+		}
+		#right_con{
+			width:240px;
+			height:320px;
+			
+			/*border:1px solid #ffff33;*/
+			float:left;
+			margin-left:20px;
+			padding:0 25px;
+			padding-top:20px;
+			background:url("img/loader_ico.gif") no-repeat center  #959595;
+		}
+		p{
+			text-align:center;
+			margin-top:5px;
+			/*border:1px solid blue;*/
+			margin-bottom:3px;
+			font-family:"微软雅黑";
+			font-weight:bold;
+			font-size:13px;
+		}
+		span{
+			font-family:"微软雅黑";
+			
+			/*border:1px solid blue;*/
+			font-size:13px;
+		}
+		#inspan .act{
+			background:#3399ff;
+			border:1px solid #000000;
+		}
+	</style>
+ </head>
+
+ <body>
+ <span id="inspan"><input id="but_Top" type="button" value="上一组" /><input id="but_Bottom" type="button" value="下一组" /></span>
+   <div id="left_con">
+	 <img src="" />
+	 <p id="left_p">信息加载中...</p>
+	 <span id="left_sp" >计算中...</span>
+   </div>
+	 
+   <div id="right_con">
+	<img src="" />
+	  <p id="right_p">信息加载中...</p>
+	 <span id="right_sp">计算中...</span>
+	
+   </div>
+   <script type="text/javascript">
+		var Left_Img = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+		//var Left_Bewrite=["第一组第","img/2.jpg","img/3.jpg","img/4.jpg"];
+		var Right_Img = ["img/2.png","img/3.png","img/1.png"];
+		//var Right_Bewrite=[];
+		var obut_Top  = document.getElementById("but_Top");
+		var obut_Bottom  = document.getElementById("but_Bottom");
+		var oleft_con = document.getElementById("left_con");
+		var oleft_img = oleft_con.getElementsByTagName("img")[0];
+		var oleft_p = oleft_con.getElementsByTagName("p")[0];
+		var oleft_span = oleft_con.getElementsByTagName("span")[0];
+		var oright_con = document.getElementById("right_con");
+		var oright_img = right_con.getElementsByTagName("img")[0];
+		var oright_p = right_con.getElementsByTagName("p")[0];
+		var oright_span = right_con.getElementsByTagName("span")[0];
+		var num=0;
+		var num_right=0;
+		var j=0;
+		var j_right=0;
+		var loopNumber=0;
+		var r_loopNumber=0;
+		//初始化
+		oleft_img.src=Left_Img[0];
+		oright_img.src=Right_Img[0];
+		oleft_span.innerHTML=num+1+"/"+Left_Img.length;
+		oright_span.innerHTML=num+1+"/"+Right_Img.length;
+		oleft_p.innerHTML="第一组第"+01+"张";
+		oright_p.innerHTML="第二组第"+01+"张";
+
+		
+
+		obut_Top.onclick=ImgTab;
+
+		
+		function ImgTab(){
+			num--;
+			num_right--;
+			if(num<0){
+				num=Left_Img.length-1;
+				
+			}
+			j=num+1
+			oleft_span.innerHTML=j+"/"+Left_Img.length;	
+		    oleft_img.src =Left_Img[num];
+			oleft_p.innerHTML="第一组第"+j+"张";
+			loopNumber = num;
+
+			if(num_right<0){
+				num_right=Right_Img.length-1;
+				}
+			j_right=num_right+1;
+			oright_span.innerHTML=j_right+"/"+Right_Img.length;	
+		    oright_img.src =Right_Img[num_right];
+			oright_p.innerHTML="第二组第"+j_right+"张";
+			
+			r_loopNumber = num_right;
+			this.className="act";
+			obut_Bottom.className="";
+		}
+		obut_Bottom.onclick=function(){
+			num++;
+			num_right++;
+			if(num>Left_Img.length-1){
+				num=0;
+			}
+			j=num+1
+			oleft_span.innerHTML=num+1+"/"+Left_Img.length;	
+		    oleft_img.src =Left_Img[num];
+			oleft_p.innerHTML="第一组第"+j+"张";
+			loopNumber = num;
+
+			if(num_right>Right_Img.length-1){
+				num_right=0;
+			}
+			j_right=num_right+1
+			oright_span.innerHTML=j_right+"/"+Right_Img.length;	
+		    oright_img.src =Right_Img[num_right];
+			oright_p.innerHTML="第二组第"+j_right+"张";
+			r_loopNumber = num_right;
+			this.className="act";
+			obut_Top.className="";
+		}
+
+		oleft_img.onclick=function(){
+			loopNumber--;
+			
+			if(loopNumber<0){
+				loopNumber=Left_Img.length-1;
+				
+			}
+			j=loopNumber+1
+			oleft_span.innerHTML=j+"/"+Left_Img.length;	
+		    oleft_img.src =Left_Img[loopNumber];
+			oleft_p.innerHTML="第一组第"+j+"张";
+			num = loopNumber;
+		}
+
+		oright_img.onclick=function(){
+			r_loopNumber--;
+			if(r_loopNumber<0){
+				r_loopNumber=Right_Img.length-1;
+				
+			}
+			j_right=r_loopNumber+1
+			oright_span.innerHTML=j_right+"/"+Right_Img.length;	
+		    oright_img.src =Right_Img[r_loopNumber];
+			oright_p.innerHTML="第二组第"+j_right+"张";
+		    num_right =  r_loopNumber;//返回num 供上面“下一组”按钮同步切换
+		}
+   </script>
+ </body>
+</html>

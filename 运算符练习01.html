@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <style type="text/css">
+  #shadeguide .grayness{
+	 background:black;
+   }
+	ul{
+		margin:0px;
+		padding:0px;
+	}
+	.p2{
+		width:100px;
+		height:100px;
+		border:5px solid #ff0099;
+		border-radius:100px;
+		text-align:center;
+		line-height:100px;
+		border-left:5px solid black;
+		transform:rotate(45deg);
+		padding:0pc;
+		margin-top:15px;
+		
+	}
+
+	#p3{
+	    width:100px;
+		height:100px;
+		border-radius:100px;
+		text-align:center;
+		line-height:100px;
+		transform:rotate(-45deg);
+		color:#6600ff;
+		margin:0px;
+		padding:0px;
+		overflow:hidden;
+	}
+	.p1{
+		width:50px;
+		height:50px;
+		border:3px solid #ff0099;
+		border-radius:100px;
+		text-align:center;
+		line-height:100px;
+		border-left:3px solid black;
+		border-top:3px solid #33ffff;
+		border-bottom:none;
+		border-right:none;
+		display:inline-block;
+		margin-right:10px;
+	}
+  </style>
+ </head>
+
+ <body>
+  <ul id="shadeguide">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ul>
+  <div class="p2"><div id="p3"></div></div>
+  
+  <p class="p1"></p><p class="p1"></p><p class="p1"></p><p class="p1"></p>
+
+  <script type="text/javascript">
+	var oli=document.getElementsByTagName("li");
+	var op3=document.getElementById("p3");
+	var colours=["#ff0000","#ffcc33","#ffff00","#33ff99","#00ffff","#0066ff","#3300cc"];
+	var initialize_color="";
+	var oldstyle=null;
+
+		/*for(var i=0;i<oli.length;i++){
+			oli[i].style.background=colours[i%colours.length];
+			
+			oli[i].onclick=function(){   
+				   this.className="grayness"; 
+					//this.style.background="black";
+			}
+		}*/
+		function displayTime(){
+		op3.innerHTML=new Date().toTimeString();
+	}
+		setInterval(displayTime,1000);
+		for(var j=0;j<oli.length;j++){
+			  // oldstyle= oli[0];
+			  oli[j].index=j;
+			oli[j].style.background=colours[j%colours.length];
+				oli[j].conceal="re";
+		   oli[j].onmouseover=function(){
+			//initialize_color=this.style.background;
+			this.style.background="#F3F3EE";
+			//alert(initialize_color);
+		     }
+	    	oli[j].onmouseout=function(){
+				if(this.conceal=="re"){
+			    this.style.background=colours[this.index%colours.length];
+				}else{
+				this.style.background="#F3F3EE";
+			}
+			}
+			oli[j].onclick=function(){  
+				  
+				  // oldstyle.conceal="re";
+				  // oldstyle=this;
+				    this.conceal="";
+					for(var i=0;i<oli.length;i++){
+
+						if(oli[i] != this){
+							oli[i].style.background=colours[i%colours.length];
+							oli[i].conceal="re";
+			         }
+
+					}
+				   
+				   //alert(oli[j].conceal);
+					
+
+				  // if(this.conceal=="re"){
+				  //oldstyle.conceal="";
+				   //oldstyle=this;
+				    //this.style.background="black";
+					//this.conceal="";
+				    //this.style.background=initialize_color;
+					
+				  // }else{
+				//	 this.style.background=initialize_color;
+				    // this.conceal="re";
+					 
+					 //this.style.background="black";
+				  // }
+					   
+					   //this.className="grayness"; 
+					//this.style.background="black";
+
+			}
+			//oli[i].onclick=function(){   
+				    //old_style.style.background=initialize_color;
+				    //old_style=this;
+				   // this.style.background="#c5bebf";
+			//}
+		}
+		
+		//alert(typeof(initialize_color));
+
+/*
+		for(var i=0;i<oli.length;i++){
+		 old_style=oli[0];
+		if(this.style.background=="#c5bebf"){
+		oli[i].onclick=function(){   
+				    old_style.style.background=initialize_color;
+				    old_style=this;
+				    this.style.background="#c5bebf";
+			}
+		}
+
+		for(var i=0;i<oli.length;i++){
+		oli[i].onclick=function(){   
+				    this.className="grayness";
+			}
+		}*/
+  </script>
+ </body>
+</html>

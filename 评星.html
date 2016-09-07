@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	#evaluate{
+		margin:0px;
+		padding:0;
+		
+	}
+	
+	#evaluate li{
+	   
+		margin:0px;
+		padding:0px;
+		list-style:none;
+		font-weight:bold;
+		font-family:"微软雅黑";
+		letter-spacing:2px;
+		width:360px;
+		overflow:hidden;
+		z-index:-1;
+		
+	}
+   
+	#total{
+		background:#ffffcc;	
+	}/*#evaluate li a{
+		float:left;
+	}*/
+    #evaluate li a{
+	    margin:0px;
+		padding:0px;
+		display:inline-block;
+		height:19px;
+		line-height:19px;
+		width:19px;
+		background:url(image/big-stars.png) center;
+		margin-left:2px;
+		padding:0px;
+		vertical-align:bottom;
+		
+		
+    }
+	 #evaluate li span{
+		font-family:"微软雅黑";
+		margin-left:10px;
+		color:#ff9900;
+		vertical-align:text-bottom;
+
+	 }
+     #evaluate li .hwx{
+		background-position:-1px 19px;
+    }
+     #evaluate li .hbx{
+		background-position:-38px 19px;
+	
+    }
+    a{
+		padding:0;
+		cursor:pointer;
+	}
+
+	 #evaluate h4 span .hwx{
+		background-position:-1px 19px;
+    }
+     #evaluate h4 span .hbx{
+		background-position:-38px 19px;
+    }
+	#evaluate h4 span{
+		
+	}
+	 #evaluate h4{
+		margin:0px;
+		padding:0px;
+	}
+	b{
+	    margin:0px;
+		padding:0px;
+		display:inline-block;
+		height:19px;
+		line-height:19px;
+		width:19px;
+		background:url(image/big-stars.png) center;
+		margin-left:2px;
+		padding:0px;
+		vertical-align:bottom;
+		
+		
+    }
+  
+  </style>
+ </head>
+ <body>
+ <ul id="evaluate">
+   <li>黄五角星:<a class="hwx"></a><a class="hwx"></a><a class="hwx"></a><a class="hwx"></a><a class="hwx"></a></li>
+   <li>白五角星:<a class="hbx"></a><a class="hbx"></a><a class="hbx"></a><a class="hbx"></a><a class="hbx"></a></li>
+   <li id="total">总体评价:<a class="hbx"></a><a class="hbx"></a><a class="hbx"></a><a class="hbx"></a><a class="hbx"></a><span>点击星星就能打分</span></li>
+   <h4 >总体评价:<span><b class="hbx"></b><b class="hbx"></b><b class="hbx"></b><b class="hbx"></b><b class="hbx"></b></span><span>点击星星就能打分</span></h4>
+ </ul>
+ <script type="text/javascript">
+	var oul=document.getElementById("evaluate");
+	var oh4=oul.getElementsByTagName("h4")[0];
+	var oh4_span=oh4.getElementsByTagName("span");
+	var oh4_ob=oh4_span[0].getElementsByTagName("b");
+	var oli=document.getElementById("total");
+	var ospan=oli.getElementsByTagName("span")[0];
+	var oa=oli.getElementsByTagName("a");
+	var j=null;
+	var oldli=null;
+	var _total=["很差","较差","还行","推荐","力荐"]
+	for(var i=0;i<oa.length;i++){
+			oa[i].index=i;
+			oa[i].onmouseover=function(){
+			this.className="hwx";
+			ospan.innerHTML=_total[this.index];
+		
+				
+			}	
+		
+
+			//oa[i].onmouseout=function(){
+			 //this.className="hbx";
+			//	if(0<j||j<=i){
+			//for(var j=0;j<i;j++){
+		//	 oa[j].className="hwx";	
+		//	}		
+	//}
+	}
+	
+	oli.onmouseout=function(){
+		ospan.innerHTML="点击星星就能打分";
+		for(var i=0;i<oa.length;i++){
+
+			oa[i].className="hbx"
+				}
+	}
+
+	//span
+	for(var j=0;j<oh4_ob.length;j++){
+			oh4_ob[j].index=j;
+			oh4_ob[j].onmouseover=function(){
+			this.className="hwx";
+			oh4_span[1].innerHTML=_total[this.index];
+			}	
+			//oh4_ob[j].onmouseout=function(){
+		
+			//this.className="hbx";
+			//oh4_span[1].innerHTML="点击星星就能打分";
+			  
+			//}
+	}
+	/*oh4_span[0].onmouseout=function(){
+		oh4_span[1].innerHTML="点击星星就能打分";
+		for(var i=0;i<oh4_ob.length;i++){
+
+			oh4_ob[i].className="hbx";
+				}
+	}*/
+	var m=5+"6";
+	alert(m);
+
+	function(){
+		return function(){
+
+			
+		}
+	}
+ </script>
+ </body>
+</html>

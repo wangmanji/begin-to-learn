@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ <style type="text/css">
+	body{
+		font-family:"Helvetica","Arial",sans-serif;
+		color:#333;
+		background-color:#ccc;
+		margin:1em 10%;
+	}
+	h1 {
+		color:#333;
+		background-color:transparent;/*透明*/
+	}
+	a {
+		color:#c60;
+		background-color:transparent;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	ul {
+		padding:0;
+	}
+	li {
+		float:left;
+		padding:1em;
+		list-style:none;
+	}
+ </style>
+ </head>
+ <body>
+   <h1>Snapshots<h1>
+   <ul id="imagegallery">
+   <li><a href="image/1.jpeg" title="Fireworks" >Fireworks</a></li>
+   <li><a href="image/2.jpg"  title="Coffee" >Coffee</a></li>
+   <li><a href="image/5.jpg"  title="Rose" >Rose</a></li>
+   <li><a href="image/6.jpg"  title="Big Ben" >Big Ben</a></li>
+   </ul>
+   
+   <img id="img_tab" src="image/shuzi.jpg" alt="shuzi" />
+   <p id="p_text">javascript图片集</p>
+   <script type="text/javascript">
+		function addLoadEvent(func){
+			var oldonload = window.onload;
+			if(typeof window.onload != "function"){
+				window.onload = func;
+			}else{
+				window.onload = function(){
+					oldonload();
+					func();
+				}
+			}
+		}
+		
+		function imgTab(lianjie){
+			if(!document.getElementById("img_tab")) return true;
+			var oimg_tab=document.getElementById("img_tab");
+			var ohref   =lianjie.getAttribute("href");
+			//if(oimg_tab.nodeName !="IMG") return true;
+			oimg_tab.setAttribute("src",ohref);
+			if (!document.getElementById("p_text")) return false;
+			var otitle = lianjie.getAttribute("title")?lianjie.getAttribute("title"):"";
+			var op_text= document.getElementById("p_text");
+			if (op_text.firstChild.nodeType == 3)
+			{
+				op_text.firstChild.nodeValue = otitle;
+			}
+			return false;
+			//document.getElementById("img_tab").setAttribute("src",lianjie.getAttribute("href"));
+			//document.getElementById("p_text").firstChild.nodeValue=lianjie.getAttribute("title");
+		}
+		
+		function prepareGallery(){
+			if(!document.getElementsByTagName) return false;
+			if(!document.getElementById) return false;
+			if(!document.getElementById("imagegallery")) return false;
+			var gallery = document.getElementById("imagegallery");
+			var Links   = gallery.getElmentsByTagName("a");
+			for (var i=0;i<Links.length;i++ )
+			{
+				Links[i].onclick = function(){
+					 imgTab(this);
+					 return false;
+				}
+			}
+		}
+		addLoadEvent(prepareGallery);
+		
+   </script>
+ </body>
+</html>

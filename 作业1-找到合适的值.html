@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	p{
+		font-weight:bold;
+	}
+</style>
+
+</head>
+
+<body>
+<p id="block"></p>
+<p id="numb"></p>
+<p id="nonum"></p>
+<p id="conversion"></p>
+<p id="nan"></p>
+<p id="max0"></p>
+
+
+<script type="text/javascript">
+
+var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+
+//Number转换结果:     NaN,NaN,0,-98765,34,-2,0,300,NaN,NaN,0,NaN,0,1,NaN,NaN,5,NaN,NaN,NaN
+//parseFloat转换结果: 100,NaN,NaN,-98765,34,-2,0,300,NaN,NaN,NaN,NaN,NaN,NaN,NaN,23.45,5,NaN,NaN,NaN
+//parseInt转换结果：  100,NaN,NaN,-98765,34,-2,0,300,NaN,NaN,NaN,NaN,NaN,NaN,NaN,23,5,NaN,NaN,NaN
+var amount = [];
+var conversion_number = [];
+var max_numb =[];
+var nan_index=[];
+var order=[];
+var oblock = document.getElementById("block");
+var onumb = document.getElementById("numb");
+var ononum = document.getElementById("nonum");
+var onan = document.getElementById("nan");
+var omax0 = document.getElementById("max0");
+var oconversion = document.getElementById("conversion");
+var a=null;
+var b=null;
+
+oblock.innerHTML="要转换的数组："+arr;
+/*
+	1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+	2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+	3、把转成数字以后，最大值判断出来：300
+	4、把 NaN 所在的位置找出来：1 14 17  19
+*/
+
+//1、找到arr里所有的数字：-98765, 34, -2, 0, 5 
+//4、把 NaN 所在的位置找出来：1 14 17  19
+//先用typeof判断数字类型且判断自身是否相等，如相等则为数字的数字类型，否则为不是数字的数字类型，即NaN;
+for(var i=0;i<arr.length;i++){                                        //遍历数组
+		if(typeof(arr[i])=="number"&&arr[i]==arr[i]){				  //用typeof判断数字类型且判断自身是否相等，如相等则为数字的数字类型
+			amount.push(arr[i]);									  //存到数组amoun	
+			onumb.innerHTML="arr里所有的数字："+amount;   						          //输出数组
+			//onumb.innerHTML+=arr[i]+"、";									  
+		}
+	}
+
+for(var i=0;i<arr.length;i++){
+		if(typeof(arr[i])=="number"&&arr[i]!=arr[i]){
+			//index=i;
+			nan_index.push(i);
+			onan.innerHTML="NaN 所在的位置："+nan_index;	
+		}
+	}
+
+//2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+//3、把转成数字以后，最大值判断出来：300
+for(var i=0;i<arr.length;i++){
+	conversion_number.push(parseFloat(arr[i]));
+	if(conversion_number[i]==conversion_number[i]){
+	   order.push(arr[i]) ;
+	   ononum.innerHTML="可以转成数字的："+order;
+	   max_numb.push(conversion_number[i]);
+	   oconversion.innerHTML="转成数字结果："+max_numb;
+	}
+	//oconversion.innerHTML=conversion_number;
+}
+
+
+//排序 从小到大排序（冒泡排序） 将第一个数字与后面的数字逐个对比较大小，如果大于则互换位置，小于则不动，然后再将第二个数与后面的数逐个比较， 依次类推
+for(var i=0;i<max_numb.length;i++){   
+		for(var j=i+1;j<max_numb.length;j++){
+	        if(max_numb[i]>max_numb[j]){
+	           a=max_numb[i];
+		       max_numb[i]=max_numb[j];
+		       max_numb[j]=a;
+	           }
+	    }
+}
+omax0.innerHTML="转成数字以后，最大值："+max_numb[max_numb.length-1];
+alert("最大值="+max_numb[max_numb.length-1]);
+
+/*使用一些排序方法，将数字从大到小排序。
+1，例如简一点的冒泡排序，将第一个数字和后面的数字逐个比较大小，如果小于，则互换位置，大于则不动。此时，第一个数为数组中的最大数。然后再将第二个数与后面的数逐个比较，一次类推。
+2，示例代码如下：
+
+public class Test {
+
+	public static void main(String[] args) {
+		int [] array = {12,3,1254,235,435,236,25,34,23};
+		int temp;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = i+1; j < array.length; j++) {
+				if (array[i] < array[j]) {
+					temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;	// 两个数交换位置
+				}
+			}
+		}
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]+"  ");
+		}
+	}
+}
+*/
+/*for(var j=0;j<conversion_number.length;j++){
+	if(conversion_number[j]==conversion_number[j]){
+	   order.push(arr[j]) ;
+	   ononum.innerHTML=order;
+	}
+}*/
+
+//oconversion.innerHTML=arr;
+
+/*for (var i=0;i<amount.length;i++ )
+{
+	if(amount[i]==amount[i]){
+		conversion_number.push(amount[i]);
+	oconversion.innerHTML=conversion_number;
+	}
+}*/
+
+
+//for(var i=0;i<nan_index.length;i++){
+//	onan.innerHTML=onan.innerHTML+"、"+nan_index[i]
+//}
+
+
+/*
+for (var i=0;i<arr.length;i++ )
+{	index=i;
+	if(isNaN(arr[i])==="NaN"){
+	   order.push(arr[i]);
+	   
+		}else{
+			amount.push(arr[i]);
+		}
+}
+for (var i=0;i<order.length;i++ )
+{
+
+	onumb.innerHTML+=order[i]+"、";
+}
+//for (var i=0;i<order.length;i++ )
+//{
+	
+//	ononum.innerHTML+=order[i]+"、";
+//}
+*/
+</script>
+
+</body>
+</html>

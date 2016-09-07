@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <style type="text/css">
+	/*#con1{
+		width:100px;
+		height:100px;
+		border:1px solid #00ffff;
+	}*/
+	#sele1{
+		float:left;
+		margin-right:4px;
+	}
+	#con2{
+	  width:225px;
+	  height:100px;
+	  border:1px solid #00ffff;
+	  margin-top:3px;
+	  text-align:center;
+	  line-height:100px;
+	    /* text-align:center;*/
+	  font-size:17px;
+	  clear:both;
+	}
+	#wcon,#bcon{
+	  display:none;
+	}
+	#con3{
+	  width:225px;
+	  font-size:13px;
+	  margin-top:3px;
+	  text-align:center;
+	  display:none;
+	}
+	#spanb{
+	 
+	}
+	input{
+	  width:221px;
+	   
+	}
+  </style>
+  <script type="text/javascript">
+	window.onload=function(){
+		var ocon2 =document.getElementById("con2");
+		var osel1 = document.getElementById("sel1");
+		var owcon = document.getElementById("wcon");
+		var obcon = document.getElementById("bcon");
+		var ocon3 = document.getElementById("con3");
+		var owhsel = document.getElementById("whsel");
+		var ocosel = document.getElementById("cosel");
+		osel1.onchange=function(){
+           var oselv1 = document.getElementById("sel1").value;	
+	   if (oselv1 == "width"||oselv1 == "height")
+	   { 
+		    
+			owcon.style.display="block";
+			obcon.style.display="none";
+			ocon3.style.display="none";
+			//alert(oselv1);
+	   }else{
+		   if(oselv1 == "background"){
+			owcon.style.display="none";
+			obcon.style.display="block";
+			ocon3.style.display="none";
+			//alert(oselv1);
+			}else{
+				owcon.style.display="none";
+			    obcon.style.display="none";
+				ocon3.style.display="block";
+			}
+			}
+		}
+		owhsel.onchange=function(){
+			var oselv1 = document.getElementById("sel1").value;
+			if(oselv1=="width"){
+			ocon2.style[oselv1]=owhsel.value;
+			//alert(owhsel.value);
+			}else{
+				ocon2.style[oselv1]=owhsel.value;
+				ocon2.style.lineHeight=owhsel.value;
+			}
+			}
+        ocosel.onchange=function(){
+			var oselv1 = document.getElementById("sel1").value;
+			ocon2.style[oselv1]=ocosel.value;
+			//alert(ocosel.value);
+		}
+	
+	var oinpu1=document.getElementById("inpu1");
+		var oinpu2=document.getElementById("inpu2");
+		var ocon2 =document.getElementById("con2");
+        var obut1 =document.getElementById("but1");
+		obut1.onclick=function(){
+		ocon2.style[oinpu1.value]=oinpu2.value;
+		}
+	}
+	       
+		 
+  </script>
+  <title>Document</title>
+ </head>
+ <body>
+  
+  <div id="big_con">
+  <div id="sele1">
+  <select id="sel1">
+   <option >请选择属性名称</option>
+   <option value="width">宽</option>
+   <option value="height">高</option>
+   <option value="background">背景颜色</option>
+   <option value="custom">自定义</option>
+  </select>
+  </div>
+  <div id="wcon">
+  <select id="whsel">
+	<option >请选择属性值</option>
+	<option value="100px">100px</option>
+	<option value="200px">200px</option>
+	<option value="300px">300px</option>
+  </select>
+  </div>
+  <div id="bcon">
+    <select id="cosel">
+	<option >请选择属性值</option>
+	<option value="red">红</option>
+	<option value="yellow">黄</option>
+	<option value="blue">蓝</option>
+	<option value="azure">天蓝色</option>
+	<option value="palegoldenrod">苍麒麟色</option>
+	<option value="palevioletred">苍紫罗蓝色</option>
+	<option value="palegreen">苍绿色</option>
+	<!--<option value="pansy">紫罗兰色</option>-->
+	<option value="papayawhip">番木色</option>
+	<option value="peachpuff">桃色</option>
+	<option value="peru">秘鲁色</option>
+	<option value="plum">杨李色</option>
+	<option value="powderblue"> 粉蓝色 </option>
+    <option value="purple"> 紫色</option> 
+    <option value="red"> 红色 </option>
+    <option value="rosybrown"> 褐玫瑰红 </option>
+	<option value="royalblue"> 宝蓝色 </option>
+	<option value="rubine"> 宝石红 </option>
+	<option value="saddlebrown"> 重褐色 </option>
+	<option value="salmon"> 鲜肉色 </option>
+	<option value="salmon pink"> 橙红色 </option>
+	<option value="sandy beige"> 浅褐色 </option>
+	<option value="sandybrown"> 沙褐色 </option>
+	<option value="sapphire"> 宝石蓝 </option>
+	<option value="scarlet"> 猩红色 </option>
+	<option value="seagreen"> 海绿色 </option>
+	<option value="seashell"> 海贝色 </option>
+	<option value="shocking pink"> 鲜粉红色 </option>
+	<option value="sienna"> 赭色 </option>
+	<option value="silver"> 银白色 </option>
+	<option value="skyblue"> 天蓝色 </option>
+	<option value="slateblue"> 石蓝色 </option>
+	<option value="slategray"> 灰石色 </option>
+	<option value="smoky gray"> 烟灰色 </option>
+	<option value="snow"> 雪白色 </option>
+	<option value="springgreen"> 春绿色 </option>
+	<option value="steelblue"> 钢蓝色 </option>
+	<option value="stone"> 石色 </option>
+	<option value="tan"> 茶色 </option>
+	<option value="teal"> 水鸭色 </option>
+	<option value="thistle"> 蓟色 </option>
+	<option value="tomato"> 番茄色 </option>
+	<option value="turquoise"> 青绿色 </option>
+	<option value="turquoise blue"> 翠蓝色</option> 
+	<option value="violet"> 紫色 </option>
+	<option value="wheat"> 浅黄色 </option>
+	<option value="white"> 白色 </option>
+	<option value="whitesmoke"> 烟白色 </option>
+	<option value="winered"> 葡萄酒红 </option>
+	<option value="yellowgreen"> 黄绿色</option>
+  </select>
+  </div>
+  </div>
+  <div id="con2">
+  <em>hello kitty</em>
+  </div>
+  <div id="con3">
+  <span>请输入要更改的属性名称↓<input id="inpu1" type="text" placeholder="属性名称如：width、height..."/></span><br />
+  <span>请输入要更改的属性的值↓<input id="inpu2" type="text" placeholder="属性值"/></span>
+  <span id="spanb"><input id="but1" type="submit" value="确定" /></span>
+  </div>
+ </body>
+ </html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ ::-webkit-input-placeholder{     
+  /* WebKit和Blink（Safari,Google Chrome, Opera15+）使用伪元素  */
+		color:red;
+	}
+:-moz-placeholder{
+	/*Mozilla Firefox 4-18使用伪类  */
+		color:red;
+}
+::-moz-placeholder{
+	/*Mozilla Firefox 19+ 使用伪元素 */
+		color:red;
+}
+:-ms-input-placeholder{
+	/*IE10使用伪类  */
+		color:red;
+
+}
+/*IE9和Opera12以下版本的CSS选择器均不支持占位文本。需要注意的是伪元素在Shadow DOM里会起到元素的真实作用。 */
+
+</style>
+</head>
+
+<body>
+
+请输入QQ号码：<input type="text" />
+<input type="button" value="判断" />
+
+<br />
+1、有没有输入<br />
+2、输入的是不是数字<br />
+3、不能有0在前面<br />
+4、不能是小数<br />
+5、输入的数字必须在5位以上、10位以内<br />
+<p> </p>
+
+<script type="text/javascript">
+	var ob    = document.getElementsByTagName("body")[0];
+	var inp_1 = ob.getElementsByTagName("input")[0];
+	var inp_2 = ob.getElementsByTagName("input")[1];
+	var op    = ob.getElementsByTagName("p")[0];
+	var inp_v1= inp_1.value;
+	//var ninp_v1=Number(inp_v1);
+	var arr=[];
+	//arr.push(inp_1.value);
+    //op.innerHTML=inp_1.value;
+	inp_2.onclick=function(){
+		if(inp_1.value==""){
+			inp_1.placeholder="未输入,请输入QQ号码";
+		}else if(Number(inp_1.value)!=Number(inp_1.value)){
+			inp_1.placeholder="输入的不是数字";
+			//alert(inp_1.value);
+			//alert(typeof(inp_1.value));
+
+			inp_1.value='';
+		//}else if(typeof(inp_1.value)=="number"&&Number(inp_1.value)==Number(inp_1.value)){
+		//	inp_1.placeholder="输入的是数字";
+			
+		}else if(inp_1.value==inp_1.value){
+			arr=inp_1.value;
+			if(parseInt(arr)!=parseFloat(arr)){
+				inp_1.placeholder="不能是小数";
+			    inp_1.value='';
+			}else if(arr[0]=="0"){
+			inp_1.placeholder="不能有0在前面";
+			inp_1.value='';
+			}else if(arr.length<5){
+				inp_1.placeholder="输入的数字须在5位以上";
+			    inp_1.value='';
+			}else if(arr.length>10){
+				inp_1.placeholder="输入的数字须在10位以内";
+			    inp_1.value='';
+			}
+            
+			//alert(arr[0]);
+			//alert(typeof(inp_1.value));
+			//inp_1.value='';
+		}
+		
+	}    
+</script>
+</body>
+</html>

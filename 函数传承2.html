@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css"> 
+   #headline{
+		display:block;
+		text-indent:24px;
+		background:#33cc33;
+		width:600px;
+		height:30px;
+		border-top:1px solid black;
+		line-height:30px;
+		color:white;
+		font-family:"微软雅黑";
+	}
+	p{
+		width:600px;
+		padding:0px;
+		margin:0;
+		text-indent:24px;
+		font-family:"微软雅黑";
+		border-bottom:2px solid #00ccff;
+		border-top:1px solid #00ccff;
+		height:45px;
+        line-height:45px;
+		margin-top:3px;
+		
+	}
+	a{
+		background:url(image/213.png) center;
+		margin-left:8px;
+		cursor:pointer;
+		/*border:1px solid black;*/
+	}
+	input{
+		height:25px;
+		margin-top:0px;
+	}
+	/*a img{
+		
+		border:1px solid black;
+		
+		
+	} */
+	
+  
+  </style>
+ </head>
+ <body>
+  <span><strong id="headline">分类名称</strong>
+  <p >秒味远程课堂<a alt="点击编辑" title="点击编辑"><img /></a></p>
+  <p style="display:none"><input /><a>保存</a><a>取消</a></p></span>
+  
+   <span><p >秒味实体课程<a alt="点击编辑" title="点击编辑"><img /></a></p>
+  <p style="display:none"><input /><a>保存</a><a>取消</a></p></span>
+ </body>
+ <script type="text/javascript">
+	var oheadline=document.getElementById("headline");
+	var osp1=document.getElementsByTagName("span")[0];
+	var osp2=document.getElementsByTagName("span")[1];
+	
+	edit(osp1);
+	edit(osp2);
+	function edit(sp){
+	var op=sp.getElementsByTagName("p");
+    var oa=sp.getElementsByTagName("a");
+	var oin=sp.getElementsByTagName("input");
+
+	oa[0].onclick=function(){
+		op[0].style.display="none";
+		op[1].style.display="block";
+	}
+	oa[1].onclick=function(){
+		//alert(op[0].childNodes[1].nodeValue);  //nodeValue 检索、设置节点的值 childNodes子元素的集合体  childNodes[0]=firstChild
+		op[0].childNodes[0].nodeValue=oin[0].value;
+		op[1].style.display="none";
+		op[0].style.display="block";	
+	}
+	oa[2].onclick=function(){
+		op[0].style.display="block";
+		op[1].style.display="none";
+	}
+	}
+ 
+ </script>
+</html>
